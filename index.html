@@ -42,6 +42,37 @@
 	</head>
 
 	<body>
+		
+		<!--<header class="mui-bar mui-bar-nav">
+		    <h1 class="mui-title">首页</h1>
+		</header>-->
+		
+		<nav class="mui-bar mui-bar-tab">
+		    <a class="mui-tab-item mui-active">
+		        <span class="mui-icon "><img src="imgs/index/sy.png"/></span>
+		        <span class="mui-tab-label">首页</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon"><img src="imgs/index/fln.png"/></span>
+		        <span class="mui-tab-label">分类</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon"><img src="imgs/index/gwcn.png"/></span>
+		        <span class="mui-tab-label">购物车</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon"><img src="imgs/index/dmdn.png"/></span>
+		        <span class="mui-tab-label">地面店</span>
+		    </a>
+		    <a class="mui-tab-item">
+		        <span class="mui-icon"><img src="imgs/index/wdn.png"/></span>
+		        <span class="mui-tab-label">我的</span>
+		    </a>
+		    
+		    
+		    
+		</nav>
+		
 		<div class="mui-content mui-wraps">
 
 			<div id="slider" class="">
@@ -61,7 +92,21 @@
 			mui.init({
 				swipeBack: true //启用右滑关闭功能
 			});
-
+			
+			
+			
+			
+			$('.mui-tab-item').on("tap",function(e){
+				
+//				console.log($(e.currentTarget).index());
+//				console.log($(e.target)[0].innerText);
+				console.log($(e.currentTarget).children(".mui-tab-label").text())
+			});
+			
+			
+			
+			
+			
 			var menuUrl = "http://47.94.84.71/mallApp-1.0/app/menu/selectMenu1?jsoncallback=?";
 			mui.ajax(menuUrl, {
 				type: "get",
@@ -192,7 +237,7 @@
 					var productInfo = data[j].productdepict;
 					var productPrice = data[j].price1;
 					var productId = data[j].productId;
-					var productUrl = homeUrl + data[j].imgurl;
+					var productUrl = homeImageUrl + data[j].imgurl;
 					var detailBtn = document.createElement("div");
 					detailBtn.href = "#";
 					detailBtn.className = "detailBtn";
@@ -215,7 +260,7 @@
 					productId: productId
 				}, productClick);
 			}
-
+			
 			function productClick(e , producId){
 				
 				var proId = $(e.currentTarget).attr("productId");
@@ -231,7 +276,9 @@
 				
 				
 			}
-
+			
+			
+			
 			mui.plusReady(function() {
 				var self = plus.webview.currentWebview(),
 					nviews = self.getSubNViews(),

@@ -3,35 +3,764 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>大物元共享消费平台</title>
+		<script src="../js/hotcss.js" type="text/javascript" charset="utf-8"></script>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/goodDetail.css" />
+		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery.fly.min.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/swiper.min.css" />
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">商品详情</h1>
-		    
+
+
+		<header style="background-color: #000000" class="mui-bar mui-bar-nav">
+			<a style="color: white;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left "></a>
+			<h1 style="color: white;" class="mui-title">商品详情</h1>
 		</header>
-		
-		<div class="mui-content">
-		    我是详情界面
+
+		<nav class="mui-bar mui-bar-tab">
+			<div class="zuo" style="background-color: white;">
+				<a class="mui-tab-item home gohome">
+					<span class="mui-icon"><img class="s3" src="../imgs/home//sy.png"/></span>
+					<span class="mui-tab-label">首页</span>
+				</a>
+				<a class="mui-tab-item shop goshop">
+					<span class="mui-icon"><img class="s3" src="../imgs/home//gwcg.png"/></span>
+					<span class="mui-tab-label">购物车</span>
+				</a>
+			</div>
+			<div class="zhong" style="background-color: #333333; color: white; text-align: center;">
+				加入购物车
+			</div>
+			<div class="you" style="background-color: #CC0010; color: white; text-align: center;">
+				立即购买
+			</div>
+		</nav>
+		<div id="mainScrollWrap" class="mui-content mui-wraps" style="background-color: #F5F5F5">
+
+			<div class="swiper-container lunbo">
+				<div class="swiper-wrapper">
+				</div>
+			</div>
+			<!--</div>-->
+
+			<!--介绍-->
+			<div class="introduction" style="background-color: white; position: relative;">
+
+			</div>
+
+			<!--规格-->
+			<div class="standard">
+
+			</div>
+
+			<!--规格介绍-->
+			<div class="standardIntruduce" style="background-color: white;">
+
+			</div>
+
+			<!--包装售后-->
+			<div class="package" style="background-color: white;">
+
+			</div>
+
+			<!--图文详情-->
+			<div class="textAndImage" style="background-color: white;">
+				<div>
+					图文详情
+				</div>
+				<div class="textAndImageName">
+					美食家一致称赞的月饼
+				</div>
+				<style type="text/css">
+					.three img {
+						width: 100%;
+					}
+				</style>
+				<div class="three" style="clear: both;">
+
+				</div>
+			</div>
+
+			<!--底线-->
+			<div class="bottomLine">
+				<div class="goToTop">
+
+				</div>
+				<div class="bottomLineText">
+					人家是有底线的
+				</div>
+			</div>
+
 		</div>
+
+		<section class="layer " style="background-color: rgba(0 , 0 , 0 , 0.5);">
+			<div class="content">
+				<div class="goodsArea" style=" display: flex;">
+					<div class="goodsImg" style="background：none;">
+                       <img src="#" />
+					</div>
+					<div class="goodsText" style=" ">
+						<p><span>整蛊</span> 有机月饼礼盒</p>
+						<p>生产日期9月5日, 生产后2日内发货</p>
+						<p>¥978.0</p>
+					</div>
+
+					<div class="goodsCloseBtn closeLayer" style="">
+
+					</div>
+				</div>
+				<div class="numberArea" style=" display: flex;">
+					<div class="numberAreaLeft" style=" flex: 2;">
+						购买数量
+					</div>
+					<div class="numberAreaCenter" style=" flex: 1;">
+
+					</div>
+					<div class="numberAreaRight" style=" flex: 2;">
+						<div class="jia" style="float: right;">
+
+						</div>
+						<div class="number" style="float: right;">
+							1
+						</div>
+						<div class="jian" style="float: right;">
+
+						</div>
+					</div>
+				</div>
+				<div class="btnsArea" style=" display: flex;">
+					<div class="butnAreaLeft" style="background-color: #F5F5F5;flex: 92.92; text-align: center; display: table-cell;">
+						<img id="gouwuche" style="vertical-align: middle;" class="butnAreaLeftImg" src="../imgs/home/gwcg.png" /><span class="mui-badge mui-badge-danger">1</span>
+					</div>
+					<div class="butnAreaCenter" style=" flex: 12.88;">
+
+					</div>
+					<div class="butnAreaRight" style="background-color: #333333; flex: 212.52;">
+						确认
+					</div>
+				</div>
+				<div class="quickBuy">
+					<button style="" type="button" class="mui-btn mui-btn-block mui-btn-red">立即购买</button>
+				</div>
+
+			</div>
+		</section>
+
 	</body>
-	
-	<script src="../js/mui.min.js"></script>
+
+	<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+
+	<script src="../js/jroll.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/home.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/swiper.min.js" type="text/javascript" charset="utf-8"></script>
 	<script type="text/javascript">
-		mui.init()
-		
-		var xxx = localStorage.getItem("goodDetailId");
-		console.log("我是" + xxx);
-		
-		
-		//监听sb事件
-		window.addEventListener("sb" , function(msg){
-//			console.log(JSON.stringify(msg));
-			console.log(msg.detail.name);
+		mui.init({
+
 		})
+		// 用户id
+		var myUserid = localStorage.getItem("user_id");
+		console.log("详情界面。。。。");
+		console.log(myUserid);
+
+		// 购物车列表数据
+		var allCarts = undefined;
+
+		// 商品详情数据
+		var foodData = undefined;
+
+		// 选中的商品
+		var selectedGoods = undefined;
+
+		var mySwiper = undefined;
+
+		var screenHeight = window.screen.height;
+		
+		var soucangId = undefined;
+
+		// 收藏列表的数据
+		var soucangData = undefined;
+
+		// 口味规格按钮点击事件
+		mui(".standard").on("tap", ".changeBtn", function(event) {
+			mui(".changeBtn").each(function() {
+				this.className = "changeBtn";
+			});
+			event.target.className = "changeBtn selected";
+			event.stopPropagation();
+
+			if(foodData) {
+				var xiabiao = $(event.target).attr("xiabiao");
+				selectedGoods = foodData.pdlist[xiabiao];
+				changeGoodsPrice();
+			} else {
+				mui.toast("商品详情获取失败");
+			}
+
+		})
+
+		$(function() {
+
+			// 底部首页按钮点击事件
+			$(".gohome").on("tap", function() {
+				mui.back();
+			});
+
+			$(".zhong")[0].style.lineHeight = $(".zhong")[0].offsetHeight + "px";
+			$(".you")[0].style.lineHeight = $(".you")[0].offsetHeight + "px";
+			// 弹出层上购物车按钮事件
+			$(".butnAreaLeft").on("tap", function() {
+				mui.openWindow({
+					url: '../shopping.html',
+					id: 'shopping'
+				});
+			});
+
+			// 弹出层上确定按钮事件
+			$(".butnAreaRight").on("tap", function(event) {
+				if($(".number").text() == 0 || $(".number").text() == "0") {
+					mui.toast("请增加商品数量");
+					return;
+				} else {
+					if(!foodData || !allCarts) {
+						mui.toast("购物车请求出错,请检测网络状态...");
+						return;
+					}
+					for(var i = 0; i < allCarts.shoppingcartlist.length; i++) {
+						if(allCarts.shoppingcartlist[i].productId == foodData.product.productId) {
+							if(allCarts.shoppingcartlist[i].productNum != $(".number").text()) {
+								// 修改商品数量
+								var modifyData = {
+									cartId: allCarts.shoppingcartlist[i].cartId,
+									productId: foodData.product.productId,
+									productNum: $(".number").text(),
+									userId: myUserid
+								}
+								modifyGoodsNumber(modifyData, event);
+								return;
+							}
+							return;
+						}
+					}
+					// 添加该商品到购物车
+					var norm = foodData.product.norm;
+					norm = $(norm);
+					var dimension = "";
+					var parameter = "";
+					for(var i = 0; i < norm.length; i++) {
+						var minArr = norm[i].innerText.split("：");
+						if(0 == i) {
+							if(minArr.length > 1) {
+								parameter = minArr[1];
+							}
+							continue;
+						}
+						if(1 == i) {
+							if(minArr.length > 1) {
+								dimension = minArr[1];
+							}
+							continue;
+						}
+						break;
+					}
+					var newDoods = {
+						cartId: "",
+						dimension: dimension,
+						parameter: parameter,
+						price: foodData.product.price1,
+						productId: foodData.product.productId,
+						productNum: $(".number").text(),
+						productname: foodData.product.productname,
+						time: "",
+						userId: myUserid
+					};
+					addNewToCarts(newDoods, event);
+				}
+
+				$(".layer").slideUp();
+			});
+
+			// 弹出层上立即购买按钮事件
+			$(".quickBuy").on("tap", function() {
+				var num = $(".number").text();
+				var goodsname=$(".goodsText span").html();
+				var goodsstyle=$(".layerParameter").html();
+				var goodsprice=$(".layerPrice").html();
+				  goodsprice=goodsprice.replace("￥",""); 
+				  console.log(goodsprice);
+				var goodsnum=$(".number").html();
+				var goodsimg=$(".swiper-slide:first img")[0].src;
+				
+				if(num == 0) {
+					mui.alert('请选择商品数量和类型', '警告');
+				} else {
+					localStorage.setItem("goodsname",goodsname);
+					localStorage.setItem("goodsstyle",goodsstyle);
+					localStorage.setItem("goodsprice",goodsprice);
+					console.log(goodsprice);
+					localStorage.setItem("goodsnum",goodsnum);
+					localStorage.setItem("goodsimg",goodsimg);
+					mui.openWindow({
+						url: '../shopping-confirm.html',
+						id: 'shopping-confirm'
+					});
+				}
+
+			})
+
+			// 弹出层关闭按钮事件
+			$(".goodsCloseBtn").on("tap", function() {
+				$(".layer").slideUp();
+			});
+
+			// 弹出层 +
+			$(".jia").on("tap", function(event) {
+				var num = $(".number").text();
+				num = num - 0 + 1;
+				$(".number").text(num);
+
+			});
+
+			// 弹出层 -
+			$(".jian").on("tap", function(event) {
+
+				var num = $(".number").text();
+				num = num - 0 - 1;
+				if(num <= 0) {
+					num = 1;
+				}
+				$(".number").text(num);
+
+			});
+
+			// 弹出层口味按钮点击事件
+			$(".tasteRowButton").on("tap", function() {
+				$(".tasteRowButton").each(function(a, item) {
+					$(item).removeClass("selctedRowButton");
+				});
+				//				console.log(this);
+				$(this).addClass("selctedRowButton");
+				event.stopPropagation();
+			});
+
+			// 展开全部按钮点击事件
+			$(".showAll").on("tap", function() {
+				$(".threeAll").fadeToggle();
+			});
+
+			// 回顶部按钮点击事件
+			$(".goToTop").on("tap", function() {
+				mui.scrollTo(0, 100);
+			});
+//         弹出框图片
+//          $(".goodsImg img").src=$(".three img")[0].src;
+			// 首页按钮点击事件
+			$(".home").on("tap", function() {
+				console.log("首页按钮...");
+			});
+
+			// 购物车按钮点击事件
+			$(".shop").on("tap", function() {
+				console.log("购物车按钮...");
+			});
+
+			// 加入购物车按钮点击事件
+			$(".zhong").on("tap", function() {
+				$(".layer .content .btnsArea")[0].style.display = "flex";
+				$(".layer .content .quickBuy")[0].style.display = "none";
+				$(".layer").slideDown();
+				$(".butnAreaRight")[0].style.lineHeight = $(".butnAreaRight")[0].offsetHeight + "px";
+				$(".butnAreaLeftImg")[0].style.marginTop = ($(".butnAreaLeft")[0].offsetHeight - $(".butnAreaLeftImg")[0].offsetHeight) / 2 + "px";
+				$(".number")[0].style.lineHeight = $(".number")[0].offsetHeight + "px";
+
+				$(".number").text(0);
+				// 查询购物车列表
+				selectAllCart();
+			});
+
+			$(".layer").height(screenHeight);
+			$(".layer").slideUp(0);
+			// 立即购买按钮点击事件
+			$(".you").on("tap", function() {
+				$(".layer .content .btnsArea")[0].style.display = "none";
+				$(".layer .content .quickBuy")[0].style.display = "block";
+				$(".layer").slideDown();
+				$(".butnAreaRight")[0].style.lineHeight = $(".butnAreaRight")[0].offsetHeight + "px";
+				$(".butnAreaLeftImg")[0].style.marginTop = ($(".butnAreaLeft")[0].offsetHeight - $(".butnAreaLeftImg")[0].offsetHeight) / 2 + "px";
+				$(".number")[0].style.lineHeight = $(".number")[0].offsetHeight + "px";
+			});
+
+			// 底部购物车按钮点击事件
+			$(".goshop").on("tap", function() {
+				mui.openWindow({
+					url: "../shopping.html",
+					id: "shopping.html",
+					show: {
+						aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+					},
+				});
+			});
+
+		});
+
+		// 监听传值事件
+		var goodsId = localStorage.getItem("goodDetailId");
+		var url = homeUrl + "/app/product/selectById";
+		// 根据商品id获取商品详情
+		myPost("/app/product/selectById", {
+			id: goodsId
+		}, function(data) {
+			console.log(data);
+			foodData = data;
+			selectedGoods = foodData.pdlist[0];
+			// 开始解析数据
+			parseData();
+
+			// 获取搜藏列表
+			myPost("/app/collect/select", {
+				userId: myUserid
+			}, function(data) {
+				soucangData = data;
+
+				changeStarColor(data);
+			});
+		})
+
+		// 根据搜藏情况判断星星情况
+		function changeStarColor(data) {
+			var isSoucangGuo = false;
+			for(var i = 0; i < data.collectContentList.length; i++) {
+				if(data.collectContentList[i].productId == foodData.product.productId) {
+					isSoucangGuo = true;
+					soucangId = data.collectContentList[i].collectId;
+					break;
+				}
+			}
+
+			if(isSoucangGuo) {
+				changeStarToRed();
+			} else {
+				changeStarToGray();
+			}
+		}
+		
+		// 改变搜藏星星的颜色
+		function changeStarToRed() {
+			$(".starImg").css({
+				"background-image": "url('../home/starRed.png')"
+			});
+			$(".collection p").css({
+				"color": "red"
+			});
+			$(".collection p").addClass("soucang")
+		}
+		function changeStarToGray() {
+			$(".starImg").css({
+				"background-image": "url('../home/star.png')"
+			});
+			$(".collection p").css({
+				"color": "gray"
+			});
+			$(".collection p").removeClass("soucang")
+		}
+
+		// 修改商品数量
+		function modifyGoodsNumber(data, event) {
+			var badgeNum = $(".mui-badge").text();
+			var num = $(".number").text();
+			data.productNum = (badgeNum - 0) + (num - 0);
+
+			myPost("/app/shopcart/updateNum", data, function() {
+				mui.toast("购物车数量修改成功...")
+				xiaoqiuDonghua(event, function() {
+					var badgeNum = $(".mui-badge").text();
+					var num = $(".number").text();
+					$(".mui-badge").text((badgeNum - 0) + (num - 0));
+				});
+			})
+		}
+		// 添加新商品商品到购物车
+		function addNewToCarts(data, event) {
+			var badgeNum = $(".mui-badge").text();
+			var num = $(".number").text();
+			data.productNum = (badgeNum - 0) + (num - 0);
+			myPost("/app/shopcart/add", data, function() {
+				mui.toast("添加购物车成功...")
+				xiaoqiuDonghua(event, function() {
+					var badgeNum = $(".mui-badge").text();
+					var num = $(".number").text();
+					$(".mui-badge").text((badgeNum - 0) + (num - 0));
+				});
+			})
+		}
+
+		// 购物车小球动画方法
+		function xiaoqiuDonghua(event, fn) {
+			var xiaoqiu = document.createElement("div");
+			xiaoqiu.style.width = "10px";
+			xiaoqiu.style.height = "10px";
+			xiaoqiu.style.backgroundColor = "red";
+			xiaoqiu.style.borderRadius = "50%";
+			xiaoqiu.style.zIndex = "100";
+			$(xiaoqiu).fly({
+				start: {
+					left: event.target.offsetLeft + event.target.offsetWidth / 2,
+					top: $(".layer").innerHeight() - event.target.offsetHeight - $("#gouwuche").height() / 2
+				},
+				end: {
+					left: $("#gouwuche").position().left + $("#gouwuche").width() / 2,
+					top: $(".layer").innerHeight() - event.target.offsetHeight - $("#gouwuche").height() / 2,
+					width: 10,
+					height: 10
+				},
+
+				onEnd: function() {
+					$(xiaoqiu).remove();
+					fn();
+				}
+			});
+
+		}
+
+		// 查询购物车方法
+		function selectAllCart() {
+			myPost('/app/shopcart/selectByUserId', {
+					userId: myUserid
+				},
+				function(data) {
+					//					console.log(data);
+					allCarts = data;
+					showCartNumber();
+				});
+		}
+
+		// 购物车图标上的数字
+		function showCartNumber(data) {
+			if(!foodData || !allCarts) {
+				return;
+			}
+			for(var i = 0; i < allCarts.shoppingcartlist.length; i++) {
+				if(allCarts.shoppingcartlist[i].productId == foodData.product.productId) {
+					$(".mui-badge").text(allCarts.shoppingcartlist[i].productNum);
+					return;
+				}
+			}
+			$(".mui-badge").text(0);
+			$(".number").text(0);
+		}
+
+		function parseData() {
+			if(!foodData) {
+				return;
+			}
+
+			// 展示轮播图
+			lunboFn(foodData.imglist);
+
+			// 商品
+			goodTextFn(foodData.product);
+
+			// 规格
+			standardFn(foodData.pdlist);
+
+			// 介绍
+			introductionFn(foodData.product);
+
+			// 包装售后
+			afterSaleFn(foodData.product.aftersale);
+
+			// 图文详情
+			textAndImgs(foodData.product.depictandimage);
+		}
+
+		// 图文详情方法
+		function textAndImgs(obj) {
+			$(".textAndImage .three").html("");
+			$(".textAndImage .three").html(obj);
+		}
+
+		// 包装售后数据加载
+		function afterSaleFn(obj) {
+			$(".package").html("");
+			var a = $("<div></div>");
+			a.html("包装售后");
+
+			var b = $("<div></div>");
+			b.addClass("packageBtn");
+
+			var c = $("<div></div>");
+			c.addClass("packageAll");
+			c[0].style.clear = "both";
+			c.html(obj);
+
+			$(".package").append(a);
+			$(".package").append(b);
+			$(".package").append(c);
+
+			// 售后按钮点击事件
+			$(".packageBtn").on("tap", function() {
+				$(".packageAll").toggle();
+			});
+		}
+
+		// 介绍数据加载
+		function introductionFn(obj) {
+			$(".standardIntruduce").html("");
+			var frist = $("<div></div>");
+			frist.addClass("first");
+			frist.html("产品介绍");
+
+			var second = $("<div></div>");
+			second.addClass("second");
+
+			var norm = obj.norm;
+			norm = $(norm);
+			for(var i = 0; i < norm.length; i++) {
+				var minArr = norm[i].innerText.split(":");
+				if(minArr.length < 2) {
+					minArr = norm[i].innerText.split("：");
+				}
+				if(minArr.length >= 2) {
+					var brand = $("<div></div>");
+					brand.addClass("brand");
+					var tempString = '<span style="">' + minArr[0] + '</span><span style="">' + minArr[1] + '</span>';
+					brand.append($(tempString));
+					second.append(brand);
+				}
+			}
+			$(".standardIntruduce").append(frist);
+			$(".standardIntruduce").append(second);
+
+		}
+		// 规格/口味数数据加载
+		function standardFn(listArr) {
+			$(".standard").html("");
+			var xuanxiang = $('<div class="text">选项</div>');
+			var row = undefined;
+			for(var i = 0; i < listArr.length; i++) {
+				if(i % 3 == 0) {
+					row = $('<div class="row"></div');
+					$(".standard").append(row);
+				}
+				var minBtn = $('<div><div>');
+				if(0 == i) {
+					minBtn.html('<button class="changeBtn selected" xiabiao=' + i + '>' + listArr[i].parameter + '</button>');
+				} else {
+					minBtn.html('<button class="changeBtn" xiabiao=' + i + '>' + listArr[i].parameter + '</button>');
+				}
+				row.append(minBtn);
+			}
+		}
+
+		// 搜藏按钮的方法
+		function collectionFn() {
+			if($(".collection p").attr("class") && $(".collection p").attr("class").indexOf("soucang") != -1) {
+				// 取消搜藏
+				console.log(soucangId);
+				myPost("/app/collect/delete", {
+					id: soucangId
+				}, function() {
+					mui.toast("取消收藏成功...")
+					changeStarToGray();
+				})
+
+			} else {
+				myPost("/app/collect/add", {
+					userId: myUserid,
+					productId: foodData.product.productId,
+					productPrice: foodData.product.price1
+				}, function() {
+					mui.toast("收藏成功....")
+					changeStarToRed();
+				})
+			}
+
+		}
+
+		// 商品名字方法
+		function goodTextFn(obj) {
+			$(".introduction").html("");
+			$(".textAndImage .textAndImageName").html("");
+			$(".textAndImage .textAndImageName").html(obj.productname);
+			var yunfei = "运费";
+			if(!obj.freight || obj.freight == 0) {
+				yunfei = "无运费";
+			} else {
+				yunfei += obj.freight;
+			}
+			var textEelement = '<div class="name" style="">' + obj.productname + '</div>' +
+				'<div class="introduce" style="">' + obj.productdepict + '</div>' +
+				'<div class="price normalPrice" style="">¥' + selectedGoods.price + '</div>' +
+				'<div class="collection" onclick="collectionFn()" style="">' +
+				'<div class="starImg">' +
+				'</div>' +
+				'<p>收藏</p>' +
+				'</div>' +
+				'<div class="transport" style="">' + yunfei + '</div>';
+			$(".introduction").html(textEelement);
+
+			// 给layer层上添加商品数据
+			$(".layer .content .goodsText").html("");
+			var tempEle = '<p><span>' + obj.productname + '</span> ' + obj.productdepict + '</p>' +
+				'<p class="layerParameter">' + selectedGoods.parameter + '</p>' +
+				'¥<p class="layerPrice">' + obj.price1 + '</p>';
+			$(".layer .content .goodsText").html(tempEle);
+		}
+
+		// 点击按钮的时候 修改商品价格和描述
+		function changeGoodsPrice() {
+			$(".layerParameter").html(selectedGoods.parameter);
+			$(".layerPrice").html("￥" + selectedGoods.price);
+			$(".normalPrice").html("￥" + selectedGoods.price);
+		}
+
+		// 轮播图方法
+		function lunboFn(listArr) {
+			if(listArr.length > 1) {
+				$(".swiper-container").html("");
+				$(".swiper-container").append($('<div class="swiper-wrapper"></div>'));
+
+				for(var i = 0; i < listArr.length; i++) {
+					var minObj = listArr[i];
+
+					var imgUrl = homeImageUrl + listArr[i].imgurl;
+					createOneLunboItem(imgUrl, listArr);
+
+				}
+
+				$(".lunbo img").height($(".lunbo").height())
+				$(".lunbo img").width("100%")
+
+				$(".swiper-container").append($('<div class="swiper-pagination"></div>'));
+
+				if(mySwiper) {
+					mySwiper = undefined;
+				}
+				mySwiper = new Swiper('.swiper-container', {
+					autoplay: 1000,
+					loop: true,
+					pagination: '.swiper-pagination',
+				})
+				// 如果只有一个slide就锁住swiper
+				if(mySwiper.slides.length <= 3) {
+					mySwiper.lockSwipes();
+				}
+			}
+		}
+
+		function createOneLunboItem(url, listArr) {
+			var oneItem = document.createElement("div");
+			//			oneItem.className = "mui-slider-item mui-slider-item-duplicate";
+			oneItem.className = "swiper-slide";
+			var imgItem = document.createElement("img");
+			var imgItem = new Image();
+			imgItem.src = url;
+			oneItem.appendChild(imgItem);
+			$(".swiper-wrapper").append(oneItem);
+		}
 	</script>
+
 </html>

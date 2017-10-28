@@ -8,7 +8,21 @@
 			"fonts/iconfont.ttf",
 			"js/util.js",
 			"html/tab-webview-subpage-chat.html",
-			"js/jquery.js"
+			"js/jquery.js",
+			"css/home.css",
+			"js/hotcss.js",
+			"js/home.js",
+			"imgs/index/dmdn.png",
+			"imgs/index/fln.png",
+			"imgs/index/sy.png",
+			"imgs/index/wdn.png",
+			"imgs/index/gwcn.png",
+			"imgs/home/zx.png",
+			"imgs/home/yx.png",
+			"imgs/home/banner4.png",
+			"imgs/home/banner2.png",
+			"imgs/home/banner-3.png",
+			"imgs/home/banner1.png"
 		],
 		"refer": [
 			"html/tab-webview-subpage-setting.html",
@@ -76,7 +90,23 @@
 		"resources": [
 			"js/mui.min.js",
 			"fonts/mui.ttf",
-			"css/mui.min.css"
+			"css/mui.min.css",
+			"home/qx.png",
+			"home/jtx@2x.png",
+			"home/js.png",
+			"imgs/home//gwcg.png",
+			"imgs/home/gwcg.png",
+			"js/jroll.js",
+			"js/swiper.min.js",
+			"css/goodDetail.css",
+			"imgs/home//sy.png",
+			"home/dixian.png",
+			"home/hddb.png",
+			"home/star.png",
+			"css/swiper.min.css",
+			"home/xzkwy.png",
+			"js/jquery.fly.min.js",
+			"home/jq.png"
 		]
 	}
 }

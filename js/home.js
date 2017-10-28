@@ -1,5 +1,6 @@
 var homeUrl = "http://47.94.84.71/mallApp-1.0";
 
+var homeImageUrl = 'http://47.94.84.71/business-1.0/sys/file/preview?path=';
 // 缓存中的常量
 // 详情页id
 var __goodsDetailId = "goodsDetailId";
