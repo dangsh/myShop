@@ -1,0 +1,216 @@
+<!doctype html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+	<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css">
+		body,
+		html {
+			height: 100%;
+			margin: 0px;
+		}
+		
+		#container {
+			width: 400px;
+			height: 300px;
+			border: 1px dotted black;
+			margin: 100px auto;
+		}
+	</style>
+	<title>快速入门</title>
+</head>
+
+<body>
+
+	<button class="btn1">最快捷模式</button>
+	<button class="btn2">最经济模式</button>
+	<button class="btn3">最短距离模式</button>
+	<button class="btn4">考虑实时路况</button>
+
+	<button class="btn5">开始搜索导航路径</button>
+
+	<div id="container" tabindex="0"></div>
+
+	<p class="locationInfo"></p>
+
+	<input type="text" name="startInput" id="startInput" value="" />
+	<button class="startBtn">获取起点坐标</button>
+
+	<input type="text" name="myInput" id="myInput" value="" />
+	<button class="myInputBtn">获取终点坐标</button>
+
+	<div id="navList" style="border: 3px dashed red;">
+
+	</div>
+
+	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=ff869e0e9cd65de0d5ba456b2b5436da"></script>
+	<script type="text/javascript">
+		var mapObj = new AMap.Map('container', {
+			resizeEnable: true,
+			zoom: 10,
+			center: [116.480983, 40.0958]
+		});
+
+		var startPoint = undefined;
+		var endPoint = undefined;
+
+		mapObj.plugin('AMap.Geolocation', function() {
+			geolocation = new AMap.Geolocation({
+				GeoLocationFirst: true,
+				enableHighAccuracy: true, //是否使用高精度定位，默认:true
+				timeout: 10000, //超过10秒后停止定位，默认：无穷大
+				maximumAge: 0, //定位结果缓存0毫秒，默认：0
+				convert: false, //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+				showButton: true, //显示定位按钮，默认：true
+				buttonPosition: 'RB', //定位按钮停靠位置，默认：'LB'，左下角
+				buttonOffset: new AMap.Pixel(10, 20), //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+				showMarker: true, //定位成功后在定位到的位置显示点标记，默认：true
+				showCircle: true, //定位成功后用圆圈表示定位精度范围，默认：true
+				panToLocation: true, //定位成功后将定位到的位置作为地图中心点，默认：true
+				zoomToAccuracy: true, //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+				extensions: "all",
+				noIpLocate: 0,
+				noGeoLocation: 0,
+				GeoLocationFirst: true,
+				useNative: true
+			});
+			mapObj.addControl(geolocation);
+			geolocation.getCurrentPosition();
+			AMap.event.addListener(geolocation, 'complete', onComplete); //返回定位信息
+			AMap.event.addListener(geolocation, 'error', onError); //返回定位出错信息
+		});
+
+		function onComplete(a) {
+
+			console.log(a);
+			$(".locationInfo").text(a.formattedAddress);
+		}
+
+		function onError(err) {
+			console.log(err);
+
+		}
+
+		//		导航
+		var a = undefined;
+		AMap.plugin('AMap.Driving', function() { //异步
+			a = new AMap.Driving({
+				polic: AMap.DrivingPolicy.LEAST_TIME,
+				extensions: "all",
+				map: mapObj,
+				panel: "navList"
+			});
+
+			AMap.event.addListener(geolocation, 'complete', navComplete); //返回定位信息
+			AMap.event.addListener(geolocation, 'error', anvError); //返回定位出错信息
+		});
+
+		console.log("-------");
+		console.log($(".btn5"));
+
+		// 搜索
+		$(".btn5").click(function() {
+			console.log("开始搜索...");
+			console.log(a);
+			if(startPoint == undefined || endPoint == undefined) {
+				console.log("终点或起点对象不完整....");
+				return;
+			}
+			a.search(startPoint, endPoint);
+		});
+
+		// 最快捷模式
+		$(".btn1").click(function() {
+			a.setPolicy(AMap.DrivingPolicy.LEAST_TIME);
+			a.search(startPoint, endPoint);
+		});
+		// 最经济模式
+		$(".btn2").click(function() {
+			a.setPolicy(AMap.DrivingPolicy.LEAST_FEE);
+			a.search(startPoint, endPoint);
+		});
+		// 最短距离模式
+		$(".btn3").click(function() {
+			a.setPolicy(AMap.DrivingPolicy.LEAST_DISTANCE);
+			a.search(startPoint, endPoint);
+		});
+		// 考虑实时路况
+		$(".btn4").click(function() {
+			a.setPolicy(AMap.DrivingPolicy.REAL_TRAFFIC);
+			a.search(startPoint, endPoint);
+		});
+
+		function navComplete(res) {
+			console.log("导航请求成功......");
+			console.log(res);
+
+		}
+
+		function anvError(err) {
+			console.log("导航请求失败......");
+			console.log(err);
+
+		}
+
+		// 搜索坐标\
+		var geocoder = undefined;
+		AMap.service('AMap.Geocoder', function() { //回调函数
+			//实例化Geocoder
+			geocoder = new AMap.Geocoder({ //城市，默认：“全国”
+			});
+			//TODO: 使用geocoder 对象完成相关功能
+
+		})
+
+		// 起点按钮
+		$(".startBtn").click(function() {
+			var myText = $("#startInput").val();
+
+			if(geocoder == undefined) {
+				console.log("地理位置服务编码失败....");
+				return;
+			}
+			getCodeFromString(myText, "start");
+		})
+
+		// 终点
+		$(".myInputBtn").click(function() {
+			var myText = $("#myInput").val();
+
+			if(geocoder == undefined) {
+				console.log("地理位置服务编码失败....");
+				return;
+			}
+			getCodeFromString(myText, "end");
+
+		})
+
+		function getCodeFromString(myText, direction) {
+			geocoder.getLocation(myText, function(status, result) {
+				if(status === 'complete' && result.info === 'OK') {
+					var lng = result.geocodes[0].location.lng;
+					var lat = result.geocodes[0].location.lat;
+					var point = new AMap.LngLat(lng, lat);
+
+					mapObj.setCenter(point);
+					mapObj.setZoom(16);
+					console.log(point);
+					if(direction == "end") {
+						endPoint = point;
+					} else {
+						startPoint = point;
+					}
+				} else {
+					console.log("编码失败....");
+					console.log(status);
+					console.log(result);
+				}
+			});
+
+		}
+	</script>
+</body>
+
+</html>

@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
-
+	<!--
+    	作者：954316227@qq.com
+    	时间：2017-10-29
+    	描述：
+    -->
 	<head>
 		<meta charset="UTF-8">
 		<script type="text/javascript" src="js/hotcss.js"></script>
@@ -100,7 +104,13 @@
 				
 //				console.log($(e.currentTarget).index());
 //				console.log($(e.target)[0].innerText);
-				console.log($(e.currentTarget).children(".mui-tab-label").text())
+				if($(e.currentTarget).index() == 1){
+					mui.openWindow({
+						url : "./html/classify.html" ,
+						id : "classify"
+					});
+				}
+//				console.log($(e.currentTarget).children(".mui-tab-label").text());
 			});
 			
 			

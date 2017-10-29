@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/jroll.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<h1 class="mui-title">分类</h1>
+		</header>
+
+		<div class="mui-content">
+			<div class="big">
+
+				<style type="text/css">
+					.wraper {
+						height: 400px;
+						border: 1px solid black;
+					}
+					
+					.wrapperLeft {
+						width: 100px;
+						float: left;
+					}
+					
+					.wrapperRight {
+						width: 290px;
+						float: right;
+					}
+					
+					.big {
+						margin-top: 50px;
+					}
+					
+					.scrollerLeft {
+						list-style: none;
+						padding: 0;
+						margin: 0;
+					}
+					
+					.scrollerLeft li {
+						text-align: center;
+						height: 40px;
+						line-height: 40px;
+					}
+					
+					.scrollerLeft .active {
+						border-bottom: 4px solid red;
+					}
+				</style>
+				<div class="wrapperLeft wraper">
+					<ul class="scrollerLeft">
+						<li class="active">服饰</li>
+						<li>美妆</li>
+						<li>家具</li>
+						<li>电子</li>
+						<li>美食</li>
+					</ul>
+
+				</div>
+
+				<div class="wrapperRight wraper">
+					<ul class="scrollerRight">
+						<li>
+							<p class="title">服饰</p>
+							<div class="showImageDiv">
+								<div class="sb">
+									<img src="../imgs/1.jpg" />
+									<p>第一张</p>
+								</div>
+								<div class="sb">
+									<img src="../imgs/2.jpg" />
+									<p>第二张</p>
+								</div>
+								<div class="sb">
+									<img src="../imgs/3.jpg" />
+									<p>第三张</p>
+								</div>
+
+							</div>
+						</li>
+						<li>
+							<p class="title">美妆</p>
+							<div class="showImageDiv">
+								<div class="sb">
+									<img src="../imgs/1.jpg" />
+									<p>第一张</p>
+								</div>
+								<div class="sb">
+									<img src="../imgs/2.jpg" />
+									<p>第二张</p>
+								</div>
+								<div class="sb">
+									<img src="../imgs/3.jpg" />
+									<p>第三张</p>
+								</div>
+
+							</div>
+						</li>
+						<li>
+							<p class="title">家具</p>
+							<div class="showImageDiv">
+								<div class="sb">
+									<img src="../imgs/1.jpg" />
+									<p>第一张</p>
+								</div>
+								<div class="sb">
+									<img src="../imgs/2.jpg" />
+									<p>第二张</p>
+								</div>
+								<div class="sb">
+									<img src="../imgs/3.jpg" />
+									<p>第三张</p>
+								</div>
+
+							</div>
+						</li>
+						<li>
+							<p class="title">电子</p>
+							<div class="showImageDiv">
+								<div class="sb">
+									<img src="../imgs/1.jpg" />
+									<p>第一张</p>
+								</div>
+								<div class="sb">
+									<img src="../imgs/2.jpg" />
+									<p>第二张</p>
+								</div>
+								<div class="sb">
+									<img src="../imgs/3.jpg" />
+									<p>第三张</p>
+								</div>
+
+							</div>
+						</li>
+						<li>
+							<p class="title">美食</p>
+							<div class="showImageDiv">
+								<div class="sb">
+									<img src="../imgs/1.jpg" />
+									<p>第一张</p>
+								</div>
+								<div class="sb">
+									<img src="../imgs/2.jpg" />
+									<p>第二张</p>
+								</div>
+								<div class="sb">
+									<img src="../imgs/3.jpg" />
+									<p>第三张</p>
+								</div>
+
+							</div>
+						</li>
+
+					</ul>
+
+				</div>
+
+				<style type="text/css">
+					.scrollerRight {
+						list-style: none;
+						padding: 0;
+						margin: 0;
+					}
+					
+					.scrollerRight li {
+						padding-top: 32px;
+					}
+					
+					.scrollerRight .showImageDiv {
+						height: 100px;
+						border: 1px solid red;
+						display: flex;
+						flex-direction: row;
+					}
+					
+					.scrollerRight .showImageDiv .sb {
+						flex: 1;
+						height: 100%;
+						border: 1px solid blue;
+					}
+					
+					.scrollerRight .showImageDiv .sb img {
+						width: 100%;
+						height: 70%;
+					}
+					
+					.scrollerRight p {
+						text-align: center;
+					}
+					
+					.scrollerRight li:nth-child(1) {
+						padding-top: 10px;
+					}
+				</style>
+			</div>
+
+		</div>
+
+	</body>
+
+	<script src="../js/mui.min.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		
+		var leftScroll = new JRoll(".wrapperLeft");
+		leftScroll.on("scrollStart", function() {
+			console.log("start");
+		});
+
+		leftScroll.options.bounce = true;
+
+		leftScroll.on("scrollEnd", function() {
+			console.log("end");
+		});
+		
+		
+		
+		var rightScroll = new JRoll(".wrapperRight");		
+		rightScroll.scrollTo(0 , 0);
+		rightScroll.options.bounce = true;
+		
+		var num = 0;
+		rightScroll.on("scroll", function() {
+			num = 0;
+			$(".scrollerRight li").each(function(index ,item){
+				if($(item).position().top <= 0){
+					num += 1;
+				}
+				
+			});
+			
+			$(".scrollerLeft li").each(function (index , item){
+				
+				$(item).removeClass("active");
+				if (num == 0){
+					if(index == 0){
+						$(item).addClass("active")
+					}
+				}else {
+					if (index == num - 1){
+						$(item).addClass("active");
+					}
+					
+				}
+			});
+		});
+		
+		$(".scrollerLeft li").on("tap" , function(){
+			
+//			var xiabiao = $(this).index();
+			var xxx = $(".scrollerRight .title").eq($(this).index())[0];
+			
+			rightScroll.scrollToElement(xxx , 300);
+			var that = this;
+			$(".scrollerLeft li").each(function(index , item){
+				$(item).removeClass("active");
+				
+				if(index == $(that).index()){
+					$(item).addClass("active");
+				}
+			});
+		});
+		
+		
+		
+		
+		
+		
+
+		
+	</script>
+
+</html>
