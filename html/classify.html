@@ -1,280 +1,628 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 
 	<head>
-		<meta charset="UTF-8">
-		<title></title>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<link href="../css/mui.min.css" rel="stylesheet" />
-		<script src="../js/jroll.js" type="text/javascript" charset="utf-8"></script>
+		<meta charset="utf-8">
+		<title>商场</title>
+		<script src="../js/hotcss.js" type="text/javascript" charset="utf-8"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="../css/mui.min.css">
+
+		<link rel="stylesheet" type="text/css" href="../css/classify.css" />
+
 		<script src="../js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<link rel="stylesheet" type="text/css" href="../css/home.css" />
+		<link rel="stylesheet" type="text/css" href="../css/search.css" />
+		<style type="text/css">
+			.scrollUl li {
+				color: #666666;
+			}
+		</style>
 	</head>
 
-	<body>
-		<header class="mui-bar mui-bar-nav">
-			<h1 class="mui-title">分类</h1>
-		</header>
+	<body style="">
 
-		<div class="mui-content">
-			<div class="big">
+		<!--<header class="mui-bar mui-bar-nav" style="background: #313131; box-shadow: none; height: 45px;">
+			<h1 id="title" class="mui-title" style="color: whitesmoke;">分类</h1>
+		</header>-->
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item ">
+				<span class="mui-icon"><img class="s0" src="../imgs/index/syn.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">首页</span>
+			</a>
+			<a class="mui-tab-item mui-active">
+				<span class="mui-icon"><img class="s1" src="../imgs/index/fl.png"/></span>
+				<span class="mui-tab-label" style="color: #E60012;">分类</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon"><img class="s2" src="../imgs/index/gwcn.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">购物车</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon"><img class="s3" src="../imgs/index/dmdn.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">地面店</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon"><img class="s4" src="../imgs/index/wdn.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">我的</span>
+			</a>
+		</nav>
 
-				<style type="text/css">
-					.wraper {
-						height: 400px;
-						border: 1px solid black;
-					}
-					
-					.wrapperLeft {
-						width: 100px;
-						float: left;
-					}
-					
-					.wrapperRight {
-						width: 290px;
-						float: right;
-					}
-					
-					.big {
-						margin-top: 50px;
-					}
-					
-					.scrollerLeft {
-						list-style: none;
-						padding: 0;
-						margin: 0;
-					}
-					
-					.scrollerLeft li {
-						text-align: center;
-						height: 40px;
-						line-height: 40px;
-					}
-					
-					.scrollerLeft .active {
-						border-bottom: 4px solid red;
-					}
-				</style>
-				<div class="wrapperLeft wraper">
-					<ul class="scrollerLeft">
-						<li class="active">服饰</li>
-						<li>美妆</li>
-						<li>家具</li>
-						<li>电子</li>
-						<li>美食</li>
-					</ul>
+		<div style="display: block;" class="normalContent mui-content">
+			<header class="header">
+
+				<div align="center" class="searchDiv">
+
+					<input id="searchInput" onkeyup="searchFn(event)" type="text" class="searText" placeholder="">
 
 				</div>
 
-				<div class="wrapperRight wraper">
-					<ul class="scrollerRight">
-						<li>
-							<p class="title">服饰</p>
-							<div class="showImageDiv">
-								<div class="sb">
-									<img src="../imgs/1.jpg" />
-									<p>第一张</p>
-								</div>
-								<div class="sb">
-									<img src="../imgs/2.jpg" />
-									<p>第二张</p>
-								</div>
-								<div class="sb">
-									<img src="../imgs/3.jpg" />
-									<p>第三张</p>
-								</div>
+				<div class="auto_hidden" id="auto">
+					<!--自动完成 DIV-->
+				</div>
+			</header>
 
-							</div>
-						</li>
-						<li>
-							<p class="title">美妆</p>
-							<div class="showImageDiv">
-								<div class="sb">
-									<img src="../imgs/1.jpg" />
-									<p>第一张</p>
-								</div>
-								<div class="sb">
-									<img src="../imgs/2.jpg" />
-									<p>第二张</p>
-								</div>
-								<div class="sb">
-									<img src="../imgs/3.jpg" />
-									<p>第三张</p>
-								</div>
+			<div style="display: none;" class="searchContent mui-content" style="border: 1px solid red;">
+			</div>
 
-							</div>
-						</li>
-						<li>
-							<p class="title">家具</p>
-							<div class="showImageDiv">
-								<div class="sb">
-									<img src="../imgs/1.jpg" />
-									<p>第一张</p>
-								</div>
-								<div class="sb">
-									<img src="../imgs/2.jpg" />
-									<p>第二张</p>
-								</div>
-								<div class="sb">
-									<img src="../imgs/3.jpg" />
-									<p>第三张</p>
-								</div>
+			<div class="center" style=" overflow: hidden; ">
+				<!--左侧精选推荐-->
+				<div class="leftRecommend" style=" width: 24.6666%; float: left;">
+					<div style="" class="title">精选推荐</div>
 
-							</div>
-						</li>
-						<li>
-							<p class="title">电子</p>
-							<div class="showImageDiv">
-								<div class="sb">
-									<img src="../imgs/1.jpg" />
-									<p>第一张</p>
-								</div>
-								<div class="sb">
-									<img src="../imgs/2.jpg" />
-									<p>第二张</p>
-								</div>
-								<div class="sb">
-									<img src="../imgs/3.jpg" />
-									<p>第三张</p>
-								</div>
+					<div id="sb" class="leftRecommendScroll">
+						<ul class="scrollUl">
 
-							</div>
-						</li>
-						<li>
-							<p class="title">美食</p>
-							<div class="showImageDiv">
-								<div class="sb">
-									<img src="../imgs/1.jpg" />
-									<p>第一张</p>
-								</div>
-								<div class="sb">
-									<img src="../imgs/2.jpg" />
-									<p>第二张</p>
-								</div>
-								<div class="sb">
-									<img src="../imgs/3.jpg" />
-									<p>第三张</p>
-								</div>
-
-							</div>
-						</li>
-
-					</ul>
+						</ul>
+					</div>
 
 				</div>
 
-				<style type="text/css">
-					.scrollerRight {
-						list-style: none;
-						padding: 0;
-						margin: 0;
-					}
-					
-					.scrollerRight li {
-						padding-top: 32px;
-					}
-					
-					.scrollerRight .showImageDiv {
-						height: 100px;
-						border: 1px solid red;
-						display: flex;
-						flex-direction: row;
-					}
-					
-					.scrollerRight .showImageDiv .sb {
-						flex: 1;
-						height: 100%;
-						border: 1px solid blue;
-					}
-					
-					.scrollerRight .showImageDiv .sb img {
-						width: 100%;
-						height: 70%;
-					}
-					
-					.scrollerRight p {
-						text-align: center;
-					}
-					
-					.scrollerRight li:nth-child(1) {
-						padding-top: 10px;
-					}
-				</style>
+				<!--右侧精选推荐分类-->
+				<div class="rightRecommendClassify" style="width: 75.2%; float: right;">
+
+					<header class="rightTop" style="">
+						<!--<header class="rightTop" style="height: 28.3132%;">-->
+						<!--轮播图区域-->
+						<div id="slider" class="mui-slider" style="height: 100%;">
+							<div class="mui-slider-group mui-slider-loop">
+								<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+								<div class="mui-slider-item mui-slider-item-duplicate">
+									<a href="#">
+										<img src="../js/recommendImg.png">
+									</a>
+								</div>
+								<!-- 第一张 -->
+								<div class="mui-slider-item">
+									<a href="#">
+										<img src="../js/recommendImg.png">
+									</a>
+								</div>
+								<!-- 第二张 -->
+								<div class="mui-slider-item">
+									<a href="#">
+										<img src="../js/recommendImg.png">
+									</a>
+								</div>
+								<!-- 第三张 -->
+								<div class="mui-slider-item">
+									<a href="#">
+										<img src="../js/recommendImg.png">
+									</a>
+								</div>
+								<!-- 第四张 -->
+								<div class="mui-slider-item">
+									<a href="#">
+										<img src="../js/recommendImg.png">
+									</a>
+								</div>
+								<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+								<div class="mui-slider-item mui-slider-item-duplicate">
+									<a href="#">
+										<img src="../js/recommendImg.png">
+									</a>
+								</div>
+							</div>
+
+						</div>
+					</header>
+					<div class="centerText" data-options="region:'center'" style="">
+						<!--<div class="centerText" data-options="region:'center'" style="height: 7.229%;">-->
+						<!--精选推荐分类字体-->
+						<div class="classifyText">精选推荐分类</div>
+					</div>
+					<footer class="rightScroll" style="overflow: hidden; ">
+						<!--<footer class="rightScroll" style="height: 64.45789%; ">-->
+						<div class="gundong displayImgs" style="height: 100%;">
+							<ul></ul>
+
+						</div>
+
+					</footer>
+
+				</div>
+
 			</div>
 
 		</div>
 
 	</body>
 
-	<script src="../js/mui.min.js"></script>
-	<script type="text/javascript">
-		mui.init();
-		
-		var leftScroll = new JRoll(".wrapperLeft");
-		leftScroll.on("scrollStart", function() {
-			console.log("start");
+	<script src="../js/mui.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/home.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/iscroll-probe.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/demoUtils.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/jroll.js" type="text/javascript" charset="utf-8"></script>
+	<script src="../js/search.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		var screenWidthPt = 375;
+
+		var pageData = undefined;
+		var leftScroll = undefined;
+		var rightScroll = undefined;
+		var lastPositionTops = [0, 0];
+
+		var isClick = false;
+
+		var searchStr = undefined;
+
+		var xxx = "";
+
+		// 是否搜索成功
+		var isSearchEnd = true;
+
+		mui.init({
+			swipeBack: true
 		});
 
-		leftScroll.options.bounce = true;
+		var historyList = [];
 
-		leftScroll.on("scrollEnd", function() {
-			console.log("end");
+		if(localStorage.getItem(__searchHistory)) {
+			var historyList = JSON.parse(localStorage.getItem(__searchHistory)).__searchHistory;
+		}
+
+		var autoComplete = new AutoComplete('searchInput', 'auto', historyList, function(rs) {
+			startSearch(rs);
 		});
-		
-		
-		
-		var rightScroll = new JRoll(".wrapperRight");		
-		rightScroll.scrollTo(0 , 0);
-		rightScroll.options.bounce = true;
-		
-		var num = 0;
-		rightScroll.on("scroll", function() {
-			num = 0;
-			$(".scrollerRight li").each(function(index ,item){
-				if($(item).position().top <= 0){
-					num += 1;
+
+		$('#searchInput').bind('input propertychange', function() {
+			var str = $(this).val();
+			searchStr = str;
+			if(!str || !$.trim(str) || $.trim(str).length == 0) {
+				$(".center").css("display", "block");
+				$(".searchContent").css("display", "none");
+				return;
+			}
+			// 删一次查询是否结束
+			if(isSearchEnd) {
+				isSearchEnd = false;
+				startSearch($(this).val());
+				autoComplete.deleteDIV();
+			}
+		});
+
+		// 开始进行模糊搜索
+		function startSearch(str) {
+			myPost('/app/product/selectByString', {
+				str: str
+			}, function(data) {
+				fenleiData(data, str);
+				isSearchEnd = true;
+			}, function() {
+				$(".center").css("display", "block");
+				$(".searchContent").css("display", "none");
+			})
+
+		}
+
+		// 展示搜索结果
+		function fenleiData(data, str) {
+			if(data.length <= 0 || !str || !$.trim(str) || $.trim(str).length == 0) {
+				$(".center").css("display", "block");
+				$(".searchContent").css("display", "none");
+				return;
+			}
+
+
+			$(".searchContent").html("");
+			for(var j = 0; j < data.length; j++) {
+
+				var productName = data[j].productname;
+				var productInfo = data[j].productdepict;
+				var productPrice = data[j].price1;
+				var productId = data[j].productId;
+				var productUrl = homeImageUrl + data[j].imgurl;
+				var detailBtn = document.createElement("div");
+				detailBtn.href = "#";
+				detailBtn.className = "detailBtn";
+				//							
+				var productList = '<ul class="mui-table-view" id="ul-wraps">' +
+					'<li class="mui-table-view-cell mui-media mui-col-xs-6">' +
+					'<div href="#" class="detailBtn" productId="' + productId + '">' +
+					'<img class="m-table-img" src=' + productUrl + '>' +
+					'<div class="mui-media-body">' +
+					'<div>' + productName + '</div>' +
+					'<div>' + productInfo + '</div>' +
+					'<div>￥' + productPrice + '</div>' +
+					'</div>' +
+					'</div>' +
+					'</li>' +
+					'</ul>';
+				$(".searchContent").append(productList);
+			}
+
+			$(".center").css("display", "none");
+			$(".searchContent").css("display", "block");
+			$('.detailBtn').on("tap", {
+				productId: productId
+			}, productClick);
+		}
+
+		// 跳转到详情界面
+		function productClick(e, productId) {
+			var historyList = [];
+			if(localStorage.getItem(__searchHistory)) {
+				historyList = JSON.parse(localStorage.getItem(__searchHistory)).__searchHistory;
+			}
+			if(historyList.length = __searchHistoryLength) {
+				historyList.shift();
+			}
+			var isHaveThisString = false;
+			for(var i = 0; i < historyList.length; i++) {
+				if(historyList[i] == searchStr) {
+					isHaveThisString = true;
+					break;
 				}
-				
+			}
+			if(false == isHaveThisString) {
+				historyList.push(searchStr);
+				localStorage.setItem(__searchHistory, JSON.stringify({
+					__searchHistory: historyList
+				}));
+			}
+
+			mui.openWindow({
+				url: "./home/goodDetail.html",
+				id: "goodDetail",
+			})
+			localStorage.setItem(__goodsDetailId, $(e.currentTarget).attr("productId"));
+		}
+
+		function searchFn(event) {
+			autoComplete.start(event);
+		}
+
+		$(function() {
+			//选项卡点击事件
+			mui('.mui-bar-tab').on('tap', 'a', function(e) {
+				var index = $(this).index();
+				switchPage(index, this);
 			});
-			
-			$(".scrollerLeft li").each(function (index , item){
-				
-				$(item).removeClass("active");
-				if (num == 0){
-					if(index == 0){
-						$(item).addClass("active")
+
+			// 切换界面
+			function switchPage(index, item) {
+				if(index == 0) {
+					mui.openWindow({
+						url: "../index.html",
+						id: "index.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
+				}
+				if(index == 1) {}
+				if(index == 2) {
+					mui.openWindow({
+						url: "shopping.html",
+						id: "shopping.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
+				}
+				if(index == 3) {
+					mui.openWindow({
+						url: "ground.html",
+						id: "ground.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
+				}
+				if(index == 4) {
+					mui.openWindow({
+						url: "my.html",
+						id: "my.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
+				}
+			}
+
+		});
+
+		var fenleiUrl = homeUrl + "/app/menu/selectMenu";
+		mui.ajax({
+			type: "get",
+			url: fenleiUrl,
+			async: true,
+			dataType: "jsonp",
+			jsonp: "jsoncallback",
+			success: function(data) {
+				//				console.log("kkkk")
+				var data = JSON.parse(data);
+				pageData = data;
+				// 布局界面
+				console.log(data)
+				layoutPage();
+
+			},
+			error: function(xhr, type, errorThrown) {
+				mui.toast("请求失败...")
+			}
+		});
+
+		// 根据数据布局界面
+		function layoutPage() {
+			if(pageData == undefined) {
+				return;
+			}
+			var classsifyArray = [];
+			var recommendArray = [];
+
+			for(var i = 0; i < pageData.length; i++) {
+				var tempObj = pageData[i];
+				classsifyArray.push(tempObj.menu1);
+				recommendArray.push(tempObj.list);
+			}
+
+			if(screen.height == 732) {
+				$(".leftRecommend").height(screen.height - $(".mui-bar-nav").height() - $(".header").height() - $(".mui-bar-tab").height() - 70);
+			} else {
+				$(".leftRecommend").height(screen.height - $(".mui-bar-nav").height() - $(".header").height() - $(".mui-bar-tab").height());
+			}
+
+			$(".leftRecommend").height($(".leftRecommend").height());
+			$(".rightRecommendClassify").height($(".leftRecommend").height() - 70);
+			$(".leftRecommendScroll").height($(".leftRecommend").height() - $(".leftRecommend .title").height())
+
+			$(".rightTop").height($(".rightRecommendClassify").height() * 0.283132);
+			$(".centerText").height($(".rightRecommendClassify").height() * 0.07229);
+			$(".rightScroll").height($(".rightRecommendClassify").height() - $(".rightTop").height() - $(".centerText").height());
+
+			$(".classifyText").css({
+				"line-height": $(".centerText").height() + "px"
+			});
+
+			$(".leftRecommendScroll").css({
+				"padding-top": "0",
+				"padding-bottom": "0"
+			})
+			$(".scrollUl").css({
+				"margin": "0"
+			});
+
+			$(".gundong").css({
+				"margin": "0",
+				"padding": "0"
+			});
+
+			// 分类
+			classifyFn(classsifyArray);
+
+			// 分类推荐
+			recommendFn(recommendArray, classsifyArray);
+
+			var leftJSroll = new JRoll(".leftRecommendScroll", {
+				bounce: false
+			});
+			leftJSroll.refresh();
+
+		}
+
+		// 左侧分类数据
+		function classifyFn(arr) {
+			// 分类
+			for(var i = 0; i < arr.length; i++) {
+				var tempLi = $("<li></li>");
+				$(tempLi).on("tap", selectLi);
+				tempLi.text(arr[i].menuname);
+				if(i == 0) {
+					tempLi.addClass("activeLi");
+				}
+				$(".scrollUl").append(tempLi);
+			}
+		}
+
+		document.addEventListener('touchmove', function(e) {
+			e.preventDefault();
+		}, isPassive() ? {
+			capture: false,
+			passive: false
+		} : false);
+
+		// 右侧推荐数据
+		function recommendFn(recommendArr, classifyArr) {
+			for(var i = 0; i < recommendArr.length; i++) {
+				var titleText = classifyArr[i].menuname;
+				var titleP = $("<p></p>");
+				if(i == 0) {
+					titleP.addClass("sss");
+				}
+				titleP.text(titleText);
+				$(".gundong > ul").append(titleP);
+
+				var minArray = recommendArr[i];
+				//				console.log(minArray)
+				var rowLi = "";
+				for(var j = 0; j < minArray.length; j++) {
+					var minObj = minArray[j];
+					var goodsId = minObj.id;
+					console.log(goodsId)
+					// 一行三张图片
+					if(j % 3 == 0) {
+						rowLi = $("<li></li>");
+						rowLi.addClass("row");
+						$(".gundong > ul").append(rowLi);
 					}
-				}else {
-					if (index == num - 1){
-						$(item).addClass("active");
-					}
-					
-				}
-			});
-		});
-		
-		$(".scrollerLeft li").on("tap" , function(){
-			
-//			var xiabiao = $(this).index();
-			var xxx = $(".scrollerRight .title").eq($(this).index())[0];
-			
-			rightScroll.scrollToElement(xxx , 300);
-			var that = this;
-			$(".scrollerLeft li").each(function(index , item){
-				$(item).removeClass("active");
-				
-				if(index == $(that).index()){
-					$(item).addClass("active");
-				}
-			});
-		});
-		
-		
-		
-		
-		
-		
+					var minDiv = $("<span></span>");
+					minDiv.css({
+						"display": "inline-block",
+						"width": "33.33333%"
+					})
+					var tempImg = document.createElement("img");
+					tempImg.src = homeImageUrl + minObj.imgurl;
+					tempImg.dataName = minObj.menuname;
+					tempImg.dataId = goodsId;
+					var p = $("<p></p>");
+					p.addClass("fenleizi");
+					p.html(minObj.menuname);
 
-		
+					minDiv.append(tempImg);
+					$(tempImg).css({
+						"width": "100%"
+					});
+					minDiv.append(p);
+					p.css({
+						"text-align": "center"
+					});
+					$(tempImg).on("tap", imgClick);
+					rowLi.append(minDiv);
+				}
+
+			}
+
+			if(!xxx || xxx == "") {
+				xxx = new IScroll('.gundong', {
+					probeType: 3,
+					mouseWheel: true,
+					bounce: false
+				});
+			}
+
+			xxx.scrollToElement($(".gundong ul>p").eq(0)[0], 10);
+			xxx.scrollToElement($(".gundong ul>p").eq(0)[0], 10);
+
+			xxx.on("scrollEnd", function() {
+				isClick = false;
+			});
+
+			xxx.on("scroll", function(a) {
+				if(isClick == true) {
+					return;
+				}
+
+				$(".gundong ul>p").each(function(index, docE) {
+					var currentTop = $(docE).position().top;
+					var sbtop = $(".rightScroll .gundong").position().top;
+					currentTop = currentTop - sbtop;
+
+					lastPositionTops[0] = lastPositionTops[1];
+					lastPositionTops[1] = currentTop;
+					if(lastPositionTops[0] * currentTop < 0) {
+						if(index != 0) {
+							$(".scrollUl>li").each(function(xiabiao, yuansu) {
+								$(yuansu).removeClass("activeLi");
+							})
+							$(".scrollUl>li").eq(index - 1).addClass("activeLi");
+						}
+
+					}
+
+				})
+			});
+		}
+		// 每张图片的点击事件
+		function imgClick() {
+			//			console.log(this.dataId)
+			//			获取要查询商品的id
+			var selectId = this.dataId;
+			mui.ajax(homeUrl + '/app/product/selectByMenu2', {
+				data: {
+					id: selectId
+				},
+				dataType: 'json', //服务器返回json格式数据
+				type: 'post', //HTTP请求类型
+				timeout: 10000, //超时时间设置为10秒；
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				success: function(data) {
+					//服务器返回响应，根据响应结果，分析是否登录成功；
+					if(data==""){
+						mui.toast("该分类暂时无数据")
+					}else{
+						fenleiData2(data)
+						
+					}
+					console.log(data)
+
+
+				},
+				error: function(xhr, type, errorThrown) {
+					//异常处理；
+					console.log(type);
+					mui.toast("请求超时")
+
+				}
+			});
+			//			localStorage.setItem(__searchStr, this.dataName);
+
+			//			mui.openWindow({
+			//				url: "./index.html",
+			//				id: "index",
+			//			})
+		}
+
+		function fenleiData2(data) {
+			console.log(data);
+
+			$(".searchContent").html("");
+			for(var j = 0; j < data.length; j++) {
+
+				var productName = data[j].productname;
+				var productInfo = data[j].productdepict;
+				var productPrice = data[j].price1;
+				var productId = data[j].productId;
+				var productUrl = homeImageUrl + data[j].imgurl;
+				var detailBtn = document.createElement("div");
+				detailBtn.href = "#";
+				detailBtn.className = "detailBtn";
+				//							
+				var productList = '<ul class="mui-table-view" id="ul-wraps">' +
+					'<li class="mui-table-view-cell mui-media mui-col-xs-6">' +
+					'<div href="#" class="detailBtn" productId="' + productId + '">' +
+					'<img class="m-table-img" src=' + productUrl + '>' +
+					'<div class="mui-media-body">' +
+					'<div>' + productName + '</div>' +
+					'<div>' + productInfo + '</div>' +
+					'<div>￥' + productPrice + '</div>' +
+					'</div>' +
+					'</div>' +
+					'</li>' +
+					'</ul>';
+				$(".searchContent").append(productList);
+			}
+
+			$(".center").css("display", "none");
+			$(".searchContent").css("display", "block");
+			$('.detailBtn').on("tap", {
+				productId: productId
+			}, productClick);
+		}
+		// 分类中每个li的点击事件
+		function selectLi(item) {
+			isClick = true;
+			var selectIndex = $(item.target).index();
+			xxx.scrollToElement($(".gundong ul>p").eq(selectIndex)[0], 100);
+			$(".scrollUl>li").each(function(xiabiao, yuansu) {
+				$(yuansu).removeClass("activeLi");
+			})
+			$(".scrollUl>li").eq(selectIndex).addClass("activeLi");
+		}
 	</script>
 
 </html>

@@ -1,0 +1,368 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>大物元共享消费平台</title>
+
+    <script src="js/hotcss.js" type="text/javascript" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link href="css/mui.min.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/home.css" />
+
+    <link rel="stylesheet" type="text/css" href="shopping/shoppingConfirmLayer.css" />
+
+    <script src="classify/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <!--<script src="js/jroll.js" type="text/javascript" charset="utf-8"></script>-->
+    <script src="js/iscroll.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        .con-input .mui-input-row {
+            border-bottom: 1px solid #EBEBEB;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="mui-bar mui-bar-nav" style="background: #FFFFFF;">
+        <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #555555;"></a>
+        <h1 class="mui-title">确认订单</h1>
+    </header>
+
+    <div class="mui-content content_wrap">
+
+        <div id="container" tabindex="0" style="height: 500px; width: 100%; display: none;"></div>
+
+        <form class="mui-input-group">
+            <div class="con-input">
+                <div class="mui-input-row">
+                    <label>收货人</label>
+                    <input type="text" id="usename" class="mui-input-clear" placeholder="请输入收货人" value="">
+                </div>
+                <div class="mui-input-row">
+                    <label>手机号码</label>
+                    <input type="text" id="phone" class="mui-input-clear" placeholder="请输入手机号" value="">
+                </div>
+                <div class="mui-input-row">
+                    <label>省市区</label>
+                    <input id="provinceArea" type="text" class="mui-input-clear" placeholder="" value="">
+                    <div class="positions" id="set_position"><img src="imgs/shopping_confirm/dw.png" /><span id="dw_word">定位</span></div>
+                </div>
+                <div class="mui-input-row">
+                    <label>详细地址</label>
+                    <input id="detailAddress" type="text" class="mui-input-clear" placeholder="" value="">
+
+                </div>
+            </div>
+            <!--<ul class="con_shop_list">
+                <li>
+                    <div class="con-left">
+                        <img src="imgs/shopping_confirm/yb.png" />
+                    </div>
+                    <div class="con-right">
+                        <h5><span id="spanLeft">正古</span>有机月饼礼盒<span id="spanRight">￥987.0</span></h5>
+                        <p class="con-p">生产日期9月5日，生产后两日内发货</p><span id="spanBottom">免运费</span>
+                    </div>
+                </li>
+            </ul>-->
+            <!--<div class="shop_allPrice">
+                <span>商品合计<span class="shop_prices">￥978.0</span></span>
+            </div>-->
+            <div class="con-shop-bottom">
+                <div class="con-shop-all">
+                    <p><span class="s-one">共1件，</span><span class="s-two">实付：</span><span class="s-three">￥978.00</span></p>
+                </div>
+                <div class="con-shop-btn">
+                    <img src="imgs/shopping_confirm/qrdd.png" />
+                </div>
+            </div>
+        </form>
+
+    </div>
+
+    <section class="layer " style="background-color: rgba(0 , 0 , 0 , 0.5); visibility: hidden;">
+
+        <div class="layerContent" style="background-color: white; position: absolute;bottom: 0; width: 100%;">
+
+            <div class="layerContentHead" style="overflow: hidden; background-color: #F5F5F5;">
+                <div class="layerCancel" style="float: left;">
+                    取消
+                </div>
+                <!--<div class="layerConfirm" style="float: right;">
+						确定
+					</div>-->
+            </div>
+            <div class="layerSearch" style="width: 100%; ">
+
+                <!--搜索框-->
+                <!--<div class="mui-input-row mui-search">
+						<input id="addressSearch" type="search" class="mui-input-clear" placeholder="">
+					</div>-->
+            </div>
+
+            <div id="wrapper" style=" background-color: white; overflow:hidden;">
+                <ul style="margin: 0; padding: 0;">
+
+                </ul>
+            </div>
+
+        </div>
+
+    </section>
+
+    <div id="popover" class="mui-popover">
+        <ul class="mui-table-view">
+            <li class="mui-table-view-cell">
+                <a href="#">Item1</a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="#">Item2</a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="#">Item3</a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="#">Item4</a>
+            </li>
+            <li class="mui-table-view-cell">
+                <a href="#">Item5</a>
+            </li>
+        </ul>
+    </div>
+
+</body>
+
+<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.0&key=ff869e0e9cd65de0d5ba456b2b5436da"></script>
+<script type="text/javascript" src="js/home.js"></script>
+<script src="http://webapi.amap.com/ui/1.0/main.js"></script>
+
+<script src="js/mui.min.js"></script>
+<script type="text/javascript">
+    var myScroll;
+    // 所有的地址信息
+    var allPoi;
+    // 地址组成信息
+    var addressComponent;
+        var st=localStorage.getItem("goodsprice");
+		var sr=localStorage.getItem("goodsnum");
+		console.log("ikkkkk");
+      $(".s-three").text(st*sr);
+    function loaded() {
+        setTimeout(function() {
+            myScroll = new IScroll("#wrapper", {
+                hScrollbar: false,
+                vScrollbar: false
+            });
+        }, 100);
+    }
+    window.addEventListener("load", loaded, false);
+
+    mui.init();
+//  var screenHeight = window.screen.height;
+//	var screenWidth = window.screen.width;
+//	$(".content_wrap").height(screenHeight)
+    $(".layer").height(screen.height);
+    $("#wrapper").height(screen.height / 3);
+
+    // 取消按钮点击事件
+    $(".layerCancel").on("tap", function() {
+        $(".layer").css({
+            "visibility": "hidden"
+        });
+    });
+    // 总钱数
+    var totalPrice = localStorage.getItem("totalMoney");
+    $(".s-three").text(totalPrice)
+
+
+    // 定位按钮点击事件
+    document.getElementById('set_position').addEventListener('tap', function() {　
+
+        mui.toast("定位中....")
+
+        $(".layerCancel")[0].style.lineHeight = $(".layerCancel")[0].offsetHeight + "px";
+        //		$(".layerConfirm")[0].style.lineHeight = $(".layerConfirm")[0].offsetHeight + "px";
+
+        // 定位及周边功能
+        AMap.plugin('AMap.Geolocation', function() {
+            var geolocation = new AMap.Geolocation({
+                enableHighAccuracy: true, //是否使用高精度定位，默认:true
+                timeout: 10000, //超过10秒后停止定位，默认：无穷大
+                maximumAge: 3000, //定位结果缓存0毫秒，默认：0
+                convert: true, //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+                showButton: true, //显示定位按钮，默认：true
+                buttonPosition: 'LB', //定位按钮停靠位置，默认：'LB'，左下角
+                buttonOffset: new AMap.Pixel(10, 20), //定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                showMarker: true, //定位成功后在定位到的位置显示点标记，默认：true
+                showCircle: true, //定位成功后用圆圈表示定位精度范围，默认：true
+                panToLocation: true, //定位成功后将定位到的位置作为地图中心点，默认：true
+                zoomToAccuracy: true, //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+                noIpLocate: 0,
+                noGeoLocation: 0,
+                GeoLocationFirst: true,
+                useNative: true,
+                extensions: "all",
+            });
+            // map.addControl(geolocation);
+            geolocation.getCurrentPosition();
+            AMap.event.addListener(geolocation, 'complete', function(rs) {
+                $(".layer").css({
+                    "visibility": "visible"
+                });
+                addressComponent = rs.addressComponent;
+                // 省市区
+                $("#provinceArea").val(rs.addressComponent.province + rs.addressComponent.city + rs.addressComponent.district);
+
+                renderList(rs.aois, rs.pois);
+
+            }); //返回定位信息
+            AMap.event.addListener(geolocation, 'error', function(err) {
+                mui.toast("定位失败,请检查GPS等定位开关,再来试试...")
+            });
+        });
+
+        /*  地图搜索功能
+        AMap.plugin('AMap.Autocomplete', function() {
+        	autocomplete = new AMap.Autocomplete({
+        		input: "addressSearch"
+        	});
+        	AMap.event.addListener(autocomplete, "select", function(re) {
+        		$(".layer").css({
+        			"visibility": "hidden"
+        		});
+        		console.log(re);
+        		// 省市区
+        		$("#provinceArea").val("");
+        		$("#provinceArea").val(re.poi.district);
+        		// 详细地址
+        		var tempText = re.poi.address + re.poi.name;
+        		$("#detailAddress").val("");
+        		$("#detailAddress").val(tempText);
+        	})
+        });
+
+        */
+    }, false)
+
+    // 渲染列表的方法
+    function renderList(list1, list2) {
+        $("#wrapper>ul").html("");
+
+        if (list2.length > 0) {
+            allPoi = list2;
+            for (var i = 0; i < list2.length; i++) {
+                var obj = list2[i];
+                var address = obj.address;
+                var name = obj.name;
+                var tempLi = document.createElement("li");
+                //					tempLi.className = "mui-table-view-cell";
+                var nameP = document.createElement("p");
+                nameP.innerText = name;
+                var addressP = document.createElement("p");
+                addressP.innerText = address;
+                tempLi.appendChild(nameP);
+                tempLi.appendChild(addressP);
+                $(tempLi).on("tap", itemClick);
+                $("#wrapper>ul").append($(tempLi));
+                //					document.getElementById("scroller").appendChild(addressP);
+            }
+            myScroll.refresh();
+        }
+    }
+
+    // 列表中按钮点击事件
+    function itemClick(event) {
+        $(".layer").css({
+            "visibility": "hidden"
+        });
+        var tempObj = allPoi[$(this).index()];
+        var first = addressComponent.township;
+        var last = tempObj.address + tempObj.name;
+        $("#detailAddress").val("");
+        $("#detailAddress").val(first + last);
+        event.preventDefault();
+    }
+    //订单支付
+    document.getElementsByClassName('con-shop-btn')[0].addEventListener('tap', function() {
+        //打开关于页面
+        var now="";
+        var name=$("#usename").val();
+        var total=$(".s-three").html();
+       total= total.replace("￥","");
+         console.log(total);
+        var tel=$("#phone").val();
+        var goodsname=localStorage.getItem("goodsname");
+        var goodsstyle= localStorage.getItem("goodsstyle");
+        var goodsprice=localStorage.getItem("goodsprice");
+        var goodsnum=parseInt(localStorage.getItem("goodsnum"));
+        var goodsimg=localStorage.getItem("goodsimg");
+        var user_id=localStorage.getItem("user_id");
+        var goodsId=localStorage.getItem("__goodsDetailId");
+            psd(now); 
+            console.log(goodsprice);
+
+       mui.ajax({
+					url: homeUrl +"/add",
+						data:{
+		                 "orderProductList":[{
+						     
+						      "parameter01": goodsstyle,
+						      "productId": goodsId,
+						      "productImg": goodsimg,
+						      "productName": goodsname,
+						      "productNum": goodsnum,
+						      "productPrice": goodsprice,
+						      "productTotal": total
+                        }],
+                       "orders":{
+						    "addressId": "1",
+						    "businessId": "string",
+						    "createtime": now,
+						    "orderId": "122",
+						    "productnum": goodsnum,
+						    "orderStatus": "1",
+						    "total": totalPrice,
+						    "userId": user_id,
+						    "userName": name
+						  }
+	},
+				      dataType:'json',//服务器返回json格式数据
+	                         type:'post',//HTTP请求类型
+	                         timeout:10000,//超时时间设置为10秒；
+	                         headers:{'Content-Type':'application/json'},
+					success: function(data) {
+						mui.openWindow({
+				            url: 'shopping-pay.html',
+				            id: 'shopping-pay'
+				        });
+					},
+					error: function(err) {
+						console.log(err);
+//                  plus.nativeUI.toast(errorThrown);
+                }
+				});
+    })
+    /**
+ * 
+ * 获取当前时间
+ */
+function psd(now){
+	var myDate = new Date();
+//获取当前年
+var year=myDate.getFullYear();
+//获取当前月
+var month=myDate.getMonth()+1;
+//获取当前日
+var date=myDate.getDate(); 
+var h=myDate.getHours();       //获取当前小时数(0-23)
+var m=myDate.getMinutes();     //获取当前分钟数(0-59)
+var s=myDate.getSeconds(); 
+var n=myDate.getMilliseconds();
+
+ now=year+'-'+month+"-"+date+"T"+h+':'+m+":"+s+"."+n;
+console.log(now);
+    return now;
+}
+</script>
+
+</html>

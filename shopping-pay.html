@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>大物元共享消费平台</title>
+		<script src="js/hotcss.js" type="text/javascript" charset="utf-8"></script>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="css/home.css" />
+		<script src="classify/jquery-1.7.1.min.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.que_btn{
+				width: 100%;
+				padding-top: 0.2rem;
+			}
+			.que_btn img{
+				width: 100%;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: #555555;"></a>
+			<h1 class="mui-title">订单支付</h1>
+		</header>
+		<div class="mui-content">
+			<div class="pay_top">
+				<div class="pay_top_price">
+					<span>订单总额：</span>
+					<span class="moneys">￥978.00</span>
+				</div>
+				<div class="pay_top_money">
+					<span>还需支付</span>
+					<span class="set_color moneys">￥987.00</span>
+				</div>
+			</div>
+			<div class="pay_bottom">
+				<div class="pay_bot_zhi">
+					选择支付方式（建议微信支付）
+				</div>
+				<div class="pay_bot_way">
+					<img src="imgs/shopping-pay/wx.png" />
+					<img class="pictures" src="imgs/shopping-pay/zfb.png" />
+				</div>
+			</div>
+			<div class="pay_info">
+				<p style="color: #E60012;">请在2017-09-12 17:08:34前完成支付，逾期将会自动取消订单</p>
+				<p>如果进行大额支付，可选择：</p>
+				<div>1.如果您有支付宝或微信钱包，可将款项先输入相应账户内，然后使用账户余额进行一次性大额支付。</div>
+				<div>2.再次“收银台”选项多次支付</div>
+				<div>3.进入“我的”-“订单管理”页面进行分次支付。</div>
+			</div>
+			<div class="que_btn">
+				<img class="btn" src="imgs/shopping-pay/qrzf.png" />
+			</div>
+		</div>
+	</body>
+
+	<script src="js/mui.min.js"></script>
+	<script type="text/javascript">
+		mui.init();
+		var st=localStorage.getItem("goodsprice");
+		var sr=localStorage.getItem("goodsnum");
+    	var totalPrice = st*sr;
+    	console.log(st);
+		 $(".moneys").text(totalPrice)
+
+		mui.plusReady(function() {
+
+			$(".btn").on("tap", function() {
+				console.log("wo shi anniu ....");
+				// 扩展API加载完毕，现在可以正常调用扩展API
+				plus.payment.getChannels(function(s) {
+					console.log("获取支付列表成功...");
+					console.log(s);
+					plus.payment.request(s[0], {id:2}, function() {
+						console.log("支付成功");
+					}, function () {
+						console.log("支付失败");
+					});
+				}, function(e) {
+					console.log("获取支付通道列表失败：");
+					console.log(e);
+				});
+			});
+
+		});
+	</script>
+
+</html>

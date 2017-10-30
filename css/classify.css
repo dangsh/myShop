@@ -1,0 +1,91 @@
+.searchDiv {
+  height: 2.3466666667rem;
+  padding-left: 0.64rem;
+  padding-right: 0.64rem;
+  /*position: relative;*/ 
+  }
+
+#searchInput {
+  height: 1.28rem;
+  border-radius: 0.5546666667rem;
+  margin-top: 0.5546666667rem;
+  background-color: #F5F5F5;
+  font-size: 0.512rem;
+  padding-right: 1.024rem; 
+  }
+
+.magnifier {
+  position: absolute;
+  width: 0.6826666667rem;
+  height: 0.6826666667rem;
+  right: 0.9386666667rem;
+  top: 2.8277333333rem; }
+
+.leftRecommend .title {
+  color: red;
+  background-color: transparent;
+  text-align: center;
+  line-height: 1.536rem;
+  height: 1.536rem;
+  font-size: 0.7253333333rem; }
+
+.scrollUl {
+  list-style: none;
+  background-color: white;
+  padding-left: 0; }
+
+.scrollUl li {
+  background: white;
+  height: 1.536rem;
+  color: #666666;
+  font-size: 0.7253333333rem;
+  line-height: 1.536rem;
+  text-align: center;
+  color: -webkit-activelink; }
+
+.scrollUl .activeLi {
+  border-bottom: 0.0426666667rem solid red; }
+
+.mui-slider-item img {
+  width: 11.3493333333rem;
+  height: 5.5893333333rem;
+  padding-left: 0.384rem;
+  padding-right: 0.6826666667rem;
+  margin-top: 0.4266666667rem;
+  padding-bottom: 0.512rem; }
+
+.classifyText, .gundong > ul > p, .gudong > ul > li p {
+  font-size: 0.512rem;
+  text-align: center;
+  margin-top: 0;
+  line-height: 100%; }
+
+.fenleizi {
+  font-size: 0.512rem;
+  text-align: center;
+  margin-bottom: 0.512rem;
+  margin-top: 0.256rem;
+  color: black; }
+
+.gundong {
+  padding-bottom: 0.8533333333rem; }
+
+.displayImgs {
+  padding-left: 0.384rem;
+  padding-right: 0.6826666667rem;
+  padding-top: 0.512rem; }
+
+.displayImgs ul {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+
+.row img {
+  width: 33.3333%;
+  height: 3.7973333333rem;
+  border-left: 0.0426666667rem solid lightgray;
+  border-right: 0.0426666667rem solid lightgray;
+  border-bottom: 0.0426666667rem solid lightgray;
+  box-sizing: border-box; }
+
+/*# sourceMappingURL=classify.css.map */

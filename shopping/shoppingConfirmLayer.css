@@ -1,0 +1,26 @@
+.layer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  z-index: 99; }
+
+.layerCancel, .layerConfirm {
+  height: 1.7493333333rem;
+  padding: 0 0.6826666667rem;
+  color: #CC0010;
+  text-align: center; }
+
+#wrapper li {
+  border-bottom: 0.0426666667rem solid #bebebe;
+  position: relative;
+  padding: 0.512rem 0.6826666667rem 0.384rem; }
+
+#wrapper li p:nth-child(1) {
+  color: #333;
+  font-size: 0.5973333333rem; }
+
+#wrapper li p:nth-child(2) {
+  color: #999;
+  font-size: 0.512rem; }
+
+/*# sourceMappingURL=shoppingConfirmLayer.css.map */

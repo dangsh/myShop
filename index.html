@@ -1,20 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<!--
-    	作者：954316227@qq.com
-    	时间：2017-10-29
-    	描述：
-    -->
-	<head>
-		<meta charset="UTF-8">
-		<script type="text/javascript" src="js/hotcss.js"></script>
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		<title>首页</title>
-		<script src="js/mui.min.js"></script>
-		<link href="css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="css/home.css" />
-		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
 
+	<head>
+		<meta charset="utf-8">
+		<title>大物元共享消费平台</title>
+		<script src="js/hotcss.js" type="text/javascript" charset="utf-8"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/home.css" />
 		<style>
 			html,
 			body {
@@ -33,50 +28,43 @@
 			.mui-bar .mui-icon:active {
 				opacity: 1;
 			}
-			
-			.mui-wraps {
-				position: relative;
-				bottom: 40px;
-			}
-			
-			.mui-content {
-				padding-top: 40px;
-			}
+	     .mui-wraps{
+		    position: relative;
+		    bottom: 40px;
+		}
+		.mui-content {
+          padding-top: 40px;
+        }
 		</style>
 	</head>
 
 	<body>
-		
-		<!--<header class="mui-bar mui-bar-nav">
-		    <h1 class="mui-title">首页</h1>
+		<!--<header class="mui-bar mui-bar-nav" style="background: #313131; box-shadow: none; height: 45px;">
+			<h1 id="title" class="mui-title">大物元共享消费平台</h1>
 		</header>-->
-		
 		<nav class="mui-bar mui-bar-tab">
-		    <a class="mui-tab-item mui-active">
-		        <span class="mui-icon "><img src="imgs/index/sy.png"/></span>
-		        <span class="mui-tab-label">首页</span>
-		    </a>
-		    <a class="mui-tab-item">
-		        <span class="mui-icon"><img src="imgs/index/fln.png"/></span>
-		        <span class="mui-tab-label">分类</span>
-		    </a>
-		    <a class="mui-tab-item">
-		        <span class="mui-icon"><img src="imgs/index/gwcn.png"/></span>
-		        <span class="mui-tab-label">购物车</span>
-		    </a>
-		    <a class="mui-tab-item">
-		        <span class="mui-icon"><img src="imgs/index/dmdn.png"/></span>
-		        <span class="mui-tab-label">地面店</span>
-		    </a>
-		    <a class="mui-tab-item">
-		        <span class="mui-icon"><img src="imgs/index/wdn.png"/></span>
-		        <span class="mui-tab-label">我的</span>
-		    </a>
-		    
-		    
-		    
+			<a id="defaultTab" class="mui-tab-item mui-active">
+				<span class="mui-icon"><img class="s0" src="imgs/index/sy.png"/></span>
+				<span class="mui-tab-label" style="color: #E60012;">首页</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon"><img class="s1" src="imgs/index/fln.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">分类</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon"><img class="s2" src="imgs/index/gwcn.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">购物车</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon"><img class="s3" src="imgs/index/dmdn.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">地面店</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon"><img class="s4" src="imgs/index/wdn.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">我的</span>
+			</a>
 		</nav>
-		
+
 		<div class="mui-content mui-wraps">
 
 			<div id="slider" class="">
@@ -88,51 +76,88 @@
 			</div>
 		</div>
 
-
-		<script src="js/util.js"></script>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
 		<script src="js/home.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			var aniShow = {};
-			mui.init({
-				swipeBack: true //启用右滑关闭功能
+		<script type="text/javascript" charset="utf-8">
+			//mui初始化
+			mui.init();
+			var subpages = ['home.html'];
+			var subpage_style = {
+				top: '45px',
+				bottom: '51px'
+			};
+
+			//选项卡点击事件
+			mui('.mui-bar-tab').on('tap', 'a', function(e) {
+				var index = $(this).index();
+				switchPage(index, this);
 			});
-			
-			
-			
-			
-			$('.mui-tab-item').on("tap",function(e){
-				
-//				console.log($(e.currentTarget).index());
-//				console.log($(e.target)[0].innerText);
-				if($(e.currentTarget).index() == 1){
+
+			// 切换界面
+			function switchPage(index, item) {
+				if(index == 0) {}
+				if(index == 1) {
 					mui.openWindow({
-						url : "./html/classify.html" ,
-						id : "classify"
+						url: "html/classify.html",
+						id: "classify.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
 					});
 				}
-//				console.log($(e.currentTarget).children(".mui-tab-label").text());
-			});
-			
-			
-			
-			
-			
-			var menuUrl = "http://47.94.84.71/mallApp-1.0/app/menu/selectMenu1?jsoncallback=?";
-			mui.ajax(menuUrl, {
-				type: "get",
-				dataType: "json",
-				jsonp: "jsoncallback",
-				success: function(data) {
-					firstDataFn(data);
-				},
-
-				error: function(err) {
-					mui.toast("网络请求出错");
+				if(index == 2) {
+					mui.openWindow({
+						url: "shopping.html",
+						id: "shopping.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
 				}
-			});
-			
+				if(index == 3) {
+					mui.openWindow({
+						url: "ground.html",
+						id: "ground.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
+				}
+				if(index == 4) {
+					mui.openWindow({
+						url: "my.html",
+						id: "my.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
+				}
+			}
+
+			if(localStorage.getItem(__indexAllData)) {
+				firstDataFn(localStorage.getItem(__indexAllData));
+			} else {
+				mui.ajax({
+					type: "get",
+					url: homeUrl + "/app/menu/selectMenu1?jsoncallback=?",
+					async: true,
+					dataType: "jsonp",
+					jsonp: "jsoncallback",
+					success: function(data) {
+						localStorage.setItem(__indexAllData, data);
+						firstDataFn(data);
+					},
+					error: function(xhr, type, errorThrown) {
+						mui.toast("请求失败...")
+						localStorage.setItem(__indexAllData, "");
+					}
+				});
+			}
+
+			// 解析第一个地址的数据
 			function firstDataFn(menuData) {
-//				menuData = JSON.parse(menuData);
+				menuData = JSON.parse(menuData);
 				for(var i = 0; i < menuData.length; i++) {
 					var menuName = menuData[i].menuname;
 					var menuId = menuData[i].id;
@@ -205,10 +230,10 @@
 				});
 
 			}
-			
+
 			// 顶部选项卡轻拍
 			function menuTap(menuId, hrefs) {
-				if(false) {
+				if(localStorage.getItem(__searchStr) && localStorage.getItem(__searchStr).length > 0) {
 					var sss = localStorage.getItem(__searchStr);
 					myPost('/app/product/selectByMenu2', {
 						id: localStorage.getItem(__searchStr)
@@ -270,182 +295,15 @@
 					productId: productId
 				}, productClick);
 			}
-			
-			function productClick(e , producId){
-				
-				var proId = $(e.currentTarget).attr("productId");
-//				console.log($(e.currentTarget).attr("productId"));
-				localStorage.setItem("goodDetailId" , proId);
-				
+
+			// 进入详情界面
+			function productClick(e, productId) {
 				mui.openWindow({
-					url:"./html/detail.html",
-					id:"detail"
-				});
-				
-				
-				
-				
+					url: "./home/goodDetail.html",
+					id: "goodDetail",
+				})
+				localStorage.setItem(__goodsDetailId, $(e.currentTarget).attr("productId"));
 			}
-			
-			
-			
-			mui.plusReady(function() {
-				var self = plus.webview.currentWebview(),
-					nviews = self.getSubNViews(),
-					subpages = util.options.subpages,
-					leftPos = Math.ceil((window.innerWidth - 60) / 2); // 设置凸起大图标为水平居中
-
-				$(".secondBtn").on("tap", function() {
-
-					//打开新窗口
-					plus.webview.open("/html/detail.html", "detail");
-					var detail = plus.webview.getWebviewById("detail");
-					mui.fire(detail, "sb", {
-						name: "zhangsan"
-					});
-
-				});
-				/**	
-				 * drawNativeIconBg 绘制带边框的半圆，
-				 * 实现原理：
-				 *   id为bg的tag 创建带边框的圆
-				 *   id为bg2的tag 创建白色矩形遮住圆下半部分，只显示凸起带边框部分
-				 *   注意创建先后顺序，创建越晚的层级越高
-				 */
-				var drawNativeIconBg = util.drawNative('iconBg', {
-					bottom: '5px',
-					left: leftPos + 'px',
-					width: '60px',
-					height: '60px',
-					position: 'dock'
-				}, [{
-					tag: 'rect',
-					id: 'bg',
-					position: {
-						top: '0px',
-						left: '0px',
-						width: '100%',
-						height: '100%'
-					},
-					rectStyles: {
-						color: '#fff',
-						radius: '30px',
-						borderColor: '#ccc',
-						borderWidth: '1px'
-					}
-				}, {
-					tag: 'rect',
-					id: 'bg2',
-					position: {
-						bottom: '0px',
-						left: '0px',
-						width: '100%',
-						height: '45px'
-					},
-					rectStyles: {
-						color: '#fff'
-					}
-				}]);
-
-				/**
-				 * 凸起图标最后创建  浮在最顶层
-				 *	id为iconBg的红色背景图
-				 * 	id为icon的字体图标
-				 * 	
-				 */
-				var drawNativeIcon = util.drawNative('tabIcon', {
-					bottom: '10px',
-					left: leftPos + 5 + 'px',
-					width: '50px',
-					height: '50px',
-					position: 'dock' //此种停靠方式表明该控件应浮在窗口最上层，以免被其他窗口遮住
-				}, [{
-					tag: 'rect',
-					id: 'iconBg',
-					position: {
-						top: '0px',
-						left: '0px',
-						width: '50px',
-						height: '100%'
-					},
-					rectStyles: {
-						color: '#d74b28',
-						size: '50px',
-						radius: '50%'
-					}
-				}, {
-					tag: 'font',
-					id: 'icon',
-					text: '\ue600', //此为字体图标Unicode码'\e600'转换为'\ue600'
-					position: {
-						top: '0px',
-						left: '0px',
-						width: '50px',
-						height: '100%'
-					},
-					textStyles: {
-						fontSrc: '_www/fonts/iconfont.ttf',
-						align: 'center',
-						color: '#fff',
-						size: '30px'
-					}
-				}]);
-				// append 到父webview中
-				self.append(drawNativeIconBg);
-				self.append(drawNativeIcon);
-
-				//自定义监听图标点击事件
-				drawNativeIcon.addEventListener('click', function(e) {
-					mui.alert('你点击了图标，你在此可以打开摄像头或者新窗口等自定义点击事件。', '悬浮球点击事件');
-					// 重绘字体颜色
-					drawNativeIcon.drawText('\ue600', {}, {
-						fontSrc: '_www/fonts/iconfont.ttf',
-						align: 'center',
-						color: '#000',
-						size: '30px'
-					}, 'icon');
-				});
-
-				//创建子webview窗口 并初始化
-				util.initSubpage();
-				var activePage = plus.webview.currentWebview();
-
-				//给每个view 添加监听点击切换
-				for(var i = 0; i < 4; i++) {
-					nviews[i].addEventListener('click', clickEvent, false);
-				}
-
-				// 自定义 tab 点击事件
-				function clickEvent(e) {
-					var currId = e.target.id,
-						currIndex = parseInt(currId.substr(currId.length - 1, 1) - 1),
-						currView = self.getStyle().subNViews[currIndex];
-
-					// 匹配对应tab窗口	
-					if(currIndex > 0) {
-						targetPage = plus.webview.getWebviewById(subpages[currIndex - 1]);
-					} else {
-						targetPage = plus.webview.currentWebview();
-					}
-
-					if(targetPage == activePage) {
-						return;
-					}
-
-					if(currIndex !== 3) {
-						//底部选项卡切换
-						util.toggleNview(currView, currIndex);
-						// 子页面切换
-						util.changeSubpage(targetPage, activePage);
-						//更改当前活跃的页面
-						activePage = targetPage;
-					} else {
-						//第四个tab 打开新窗口
-						var newWV = plus.webview.create('html/new-webview.html', 'new');
-						newWV.show('slide-in-right', 200);
-					}
-				}
-			});
 		</script>
 	</body>
 

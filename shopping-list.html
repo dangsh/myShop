@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>大物元共享消费平台</title>
+		<script src="js/hotcss.js" type="text/javascript" charset="utf-8"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<link rel="stylesheet" href="css/mui.min.css">
+		<link rel="stylesheet" type="text/css" href="css/home.css" />
+		<style>
+
+		</style>
+	</head>
+
+	<body>
+		<nav class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item ">
+				<span class="mui-icon"><img class="s0" src="imgs/index/syn.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">首页</span>
+			</a>
+			<a class="mui-tab-item mui-active">
+				<span class="mui-icon"><img class="s1" src="imgs/index/fln.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">分类</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon"><img class="s2" src="imgs/index/gwc.png"/></span>
+				<span class="mui-tab-label" style="color: #E60012;">购物车</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon"><img class="s3" src="imgs/index/dmdn.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">地面店</span>
+			</a>
+			<a class="mui-tab-item">
+				<span class="mui-icon"><img class="s4" src="imgs/index/wdn.png"/></span>
+				<span class="mui-tab-label" style="color: gray;">我的</span>
+			</a>
+		</nav>
+		<div class="shop-bg">
+			<div class="tiao-btn">
+				<img src="imgs/shopping/msqtx.png" />
+			</div>
+		</div>
+		<script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/mui.min.js"></script>
+		<script>
+			mui.init();
+			mui('.mui-bar-tab').on('tap', 'a', function(e) {
+				var index = $(this).index();
+				switchPage(index, this);
+			});
+
+			// 切换界面
+			function switchPage(index, item) {
+				if(index == 0) {
+					mui.openWindow({
+						url: "index.html",
+						id: "index.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
+				}
+				if(index == 1) {
+					mui.openWindow({
+						url: "classify.html",
+						id: "classify.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
+				}
+				if(index == 2) {}
+				if(index == 3) {
+					mui.openWindow({
+						url: "ground.html",
+						id: "ground.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
+				}
+				if(index == 4) {
+					mui.openWindow({
+						url: "my.html",
+						id: "my.html",
+						show: {
+							aniShow: "none", //页面显示动画，默认为”slide-in-right“；
+						},
+					});
+				}
+			}
+			var screenHeight = window.screen.height;
+			var screenWidth = window.screen.width;
+			//			console.log(screenHeight-45)
+			$(".shop-bg").width(screenWidth);
+			$(".shop-bg").height(screenHeight - 66);
+			$('.tiao-btn').on('tap', function() {
+				mui.openWindow({
+					url: 'index.html',
+					id: 'index'
+				});
+			})
+		</script>
+	</body>
+
+</html>

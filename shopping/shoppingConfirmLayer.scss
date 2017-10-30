@@ -1,0 +1,33 @@
+@import '../css/px2rem.scss';
+$designWidth: 375;
+
+.layer {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    z-index: 99;
+}
+
+.layerCancel , .layerConfirm{
+    height: px2rem(41);
+//  width: px2rem(60);
+    padding: 0 px2rem(16);
+    color: #CC0010;
+    text-align: center;
+}
+
+#wrapper li{
+    border-bottom: px2rem(1) solid #bebebe;
+    position: relative;
+    padding: px2rem(12) px2rem(16) px2rem(9);
+
+}
+#wrapper li p:nth-child(1){
+    color: #333;
+    font-size: px2rem(14);
+}
+#wrapper li p:nth-child(2){
+    color: #999;
+    font-size: px2rem(12);
+}
+
